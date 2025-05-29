@@ -151,19 +151,10 @@
 <div class="result" id="result"></div>
 
 <script>
-  const answers = {
-  q1: "ب",
-  q2: "أ",
-  q3: "ج",
-  q4: "ج",
-  q5: "أ",
-  q6: "ب",
-  q7: "ب",
-  q8: "ب",
-  q9: "ب",
-  q10: "ب"
-};
-
+const answers = {
+    q1: "ب", q2: "أ", q3: "ج", q4: "ج", q5: "أ",
+    q6: "ب", q7: "ب", q8: "ب", q9: "ب", q10: "ب"
+  };
   function showResult() {
     let score = 0;
     for (let q in answers) {
