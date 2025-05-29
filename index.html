@@ -67,82 +67,82 @@
  <!-- أسئلة جديدة -->
 <div class="question">
   <p>1. ما هي المهارة الأهم عند التعامل مع الزبائن؟</p>
-  <label><input type="radio" name="q11" value="أ"> أ) السرعة فقط</label><br>
-  <label><input type="radio" name="q11" value="ب"> ب) اللباقة وحسن الاستماع</label><br>
-  <label><input type="radio" name="q11" value="ج"> ج) الصرامة</label><br>
-  <label><input type="radio" name="q11" value="د"> د) تجاهل المشاكل</label>
+  <label><input type="radio" name="q1" value="أ"> أ) السرعة فقط</label><br>
+  <label><input type="radio" name="q1" value="ب"> ب) اللباقة وحسن الاستماع</label><br>
+  <label><input type="radio" name="q1" value="ج"> ج) الصرامة</label><br>
+  <label><input type="radio" name="q1" value="د"> د) تجاهل المشاكل</label>
 </div>
 
 <div class="question">
   <p>2. ما هو الرمز الخاص بالحساب البريدي الجاري؟</p>
-  <label><input type="radio" name="q12" value="أ"> أ) CCP</label><br>
-  <label><input type="radio" name="q12" value="ب"> ب) RIB</label><br>
-  <label><input type="radio" name="q12" value="ج"> ج) IBAN</label><br>
-  <label><input type="radio" name="q12" value="د"> د) CIB</label>
+  <label><input type="radio" name="q2" value="أ"> أ) CCP</label><br>
+  <label><input type="radio" name="q2" value="ب"> ب) RIB</label><br>
+  <label><input type="radio" name="q2" value="ج"> ج) IBAN</label><br>
+  <label><input type="radio" name="q2" value="د"> د) CIB</label>
 </div>
 
 <div class="question">
   <p>3. ما هي الوثائق المطلوبة لفتح حساب بريدي؟</p>
-  <label><input type="radio" name="q13" value="أ"> أ) بطاقة تعريف وطنية فقط</label><br>
-  <label><input type="radio" name="q13" value="ب"> ب) شهادة ميلاد</label><br>
-  <label><input type="radio" name="q13" value="ج"> ج) بطاقة تعريف وطنية + طلب فتح حساب</label><br>
-  <label><input type="radio" name="q13" value="د"> د) أي وثيقة تعريفية</label>
+  <label><input type="radio" name="q3" value="أ"> أ) بطاقة تعريف وطنية فقط</label><br>
+  <label><input type="radio" name="q3" value="ب"> ب) شهادة ميلاد</label><br>
+  <label><input type="radio" name="q3" value="ج"> ج) بطاقة تعريف وطنية + طلب فتح حساب</label><br>
+  <label><input type="radio" name="q3" value="د"> د) أي وثيقة تعريفية</label>
 </div>
 
 <div class="question">
   <p>4. في حالة وجود طابور طويل، ما أول خطوة تقوم بها؟</p>
-  <label><input type="radio" name="q14" value="أ"> أ) تجاهله</label><br>
-  <label><input type="radio" name="q14" value="ب"> ب) تسريع العمل ولو بدون دقة</label><br>
-  <label><input type="radio" name="q14" value="ج"> ج) تنظيم الطابور وطمأنة الزبائن</label><br>
-  <label><input type="radio" name="q14" value="د"> د) إغلاق المكتب مؤقتاً</label>
+  <label><input type="radio" name="q4" value="أ"> أ) تجاهله</label><br>
+  <label><input type="radio" name="q4" value="ب"> ب) تسريع العمل ولو بدون دقة</label><br>
+  <label><input type="radio" name="q4" value="ج"> ج) تنظيم الطابور وطمأنة الزبائن</label><br>
+  <label><input type="radio" name="q4" value="د"> د) إغلاق المكتب مؤقتاً</label>
 </div>
 
 <div class="question">
   <p>5. زبون يودع 10.000 دج، ثم يسحب 4.500 دج، ما الرصيد المتبقي؟</p>
-  <label><input type="radio" name="q15" value="أ"> أ) 5.500 دج</label><br>
-  <label><input type="radio" name="q15" value="ب"> ب) 6.000 دج</label><br>
-  <label><input type="radio" name="q15" value="ج"> ج) 4.500 دج</label><br>
-  <label><input type="radio" name="q15" value="د"> د) 3.500 دج</label>
+  <label><input type="radio" name="q5" value="أ"> أ) 5.500 دج</label><br>
+  <label><input type="radio" name="q5" value="ب"> ب) 6.000 دج</label><br>
+  <label><input type="radio" name="q5" value="ج"> ج) 4.500 دج</label><br>
+  <label><input type="radio" name="q5" value="د"> د) 3.500 دج</label>
 </div>
 
 <div class="question">
   <p>6. ما الحد الأقصى للسحب من البطاقة الذهبية في اليوم؟</p>
-  <label><input type="radio" name="q16" value="أ"> أ) 20.000 دج</label><br>
-  <label><input type="radio" name="q16" value="ب"> ب) 50.000 دج</label><br>
-  <label><input type="radio" name="q16" value="ج"> ج) 100.000 دج</label><br>
-  <label><input type="radio" name="q16" value="د"> د) 200.000 دج</label>
+  <label><input type="radio" name="q6" value="أ"> أ) 20.000 دج</label><br>
+  <label><input type="radio" name="q6" value="ب"> ب) 50.000 دج</label><br>
+  <label><input type="radio" name="q6" value="ج"> ج) 100.000 دج</label><br>
+  <label><input type="radio" name="q6" value="د"> د) 200.000 دج</label>
 </div>
 
 <div class="question">
   <p>7. ما هي اللغة الرسمية التي تُكتب بها الوثائق الإدارية في البريد؟</p>
-  <label><input type="radio" name="q17" value="أ"> أ) الإنجليزية</label><br>
-  <label><input type="radio" name="q17" value="ب"> ب) العربية</label><br>
-  <label><input type="radio" name="q17" value="ج"> ج) الفرنسية</label><br>
-  <label><input type="radio" name="q17" value="د"> د) الأمازيغية</label>
+  <label><input type="radio" name="q7" value="أ"> أ) الإنجليزية</label><br>
+  <label><input type="radio" name="q7" value="ب"> ب) العربية</label><br>
+  <label><input type="radio" name="q7" value="ج"> ج) الفرنسية</label><br>
+  <label><input type="radio" name="q7" value="د"> د) الأمازيغية</label>
 </div>
 
 <div class="question">
   <p>8. ما هو دور المكلف بالزبائن في البريد؟</p>
-  <label><input type="radio" name="q18" value="أ"> أ) بيع الطوابع فقط</label><br>
-  <label><input type="radio" name="q18" value="ب"> ب) تقديم المعلومات وتنفيذ الخدمات البريدية والمالية</label><br>
-  <label><input type="radio" name="q18" value="ج"> ج) مراقبة الموظفين</label><br>
-  <label><input type="radio" name="q18" value="د"> د) ترتيب المكاتب</label>
+  <label><input type="radio" name="q8" value="أ"> أ) بيع الطوابع فقط</label><br>
+  <label><input type="radio" name="q8" value="ب"> ب) تقديم المعلومات وتنفيذ الخدمات البريدية والمالية</label><br>
+  <label><input type="radio" name="q8" value="ج"> ج) مراقبة الموظفين</label><br>
+  <label><input type="radio" name="q8" value="د"> د) ترتيب المكاتب</label>
 </div>
 
 <div class="question">
    <p>9. ما هي الخدمة التي تتيح إرسال بريد مع إثبات التسليم؟</p>
-  <label><input type="radio" name="q19" value="أ"> أ) البريد العادي</label><br>
-  <label><input type="radio" name="q19" value="ب"> ب) البريد المسجل</label><br>
-  <label><input type="radio" name="q19" value="ج"> ج) البريد الإلكتروني</label><br>
-  <label><input type="radio" name="q19" value="د"> د) البريد الممتاز</label>
+  <label><input type="radio" name="q9" value="أ"> أ) البريد العادي</label><br>
+  <label><input type="radio" name="q9" value="ب"> ب) البريد المسجل</label><br>
+  <label><input type="radio" name="q9" value="ج"> ج) البريد الإلكتروني</label><br>
+  <label><input type="radio" name="q9" value="د"> د) البريد الممتاز</label>
 </div>
 
 <div class="question">
   <p>10. ما الفرق بين الحوالة البريدية والحوالة الإلكترونية؟</p>
-  <label><input type="radio" name="q20" value="أ"> أ) لا يوجد فرق</label><br>
-  <label><input type="radio" name="q20" value="ب"> ب) الإلكترونية أسرع وتُحول عبر الإنترنت</label><br>
-  <label><input type="radio" name="q20" value="ج"> ج) البريدية مجانية</label><br>
-  <label><input type="radio" name="q20" value="د"> د) البريدية تُرسل فقط في الخارج</label>
+  <label><input type="radio" name="q10" value="أ"> أ) لا يوجد فرق</label><br>
+  <label><input type="radio" name="q10" value="ب"> ب) الإلكترونية أسرع وتُحول عبر الإنترنت</label><br>
+  <label><input type="radio" name="q10" value="ج"> ج) البريدية مجانية</label><br>
+  <label><input type="radio" name="q10" value="د"> د) البريدية تُرسل فقط في الخارج</label>
 </div>
 
   <button type="button" onclick="showResult()">عرض النتيجة</button>
