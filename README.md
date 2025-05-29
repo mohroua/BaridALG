@@ -130,11 +130,11 @@
 </div>
 
 <div class="question">
-  <p>9. من هو المدير العام الحالي لبريد الجزائر؟</p>
-  <label><input type="radio" name="q19" value="أ"> أ) [اسم المدير الحالي]</label><br>
-  <label><input type="radio" name="q19" value="ب"> ب) [اسم آخر]</label><br>
-  <label><input type="radio" name="q19" value="ج"> ج) [اسم ثالث]</label><br>
-  <label><input type="radio" name="q19" value="د"> د) [اسم رابع]</label>
+   <p>9. ما هي الخدمة التي تتيح إرسال بريد مع إثبات التسليم؟</p>
+  <label><input type="radio" name="q19" value="أ"> أ) البريد العادي</label><br>
+  <label><input type="radio" name="q19" value="ب"> ب) البريد المسجل</label><br>
+  <label><input type="radio" name="q19" value="ج"> ج) البريد الإلكتروني</label><br>
+  <label><input type="radio" name="q19" value="د"> د) البريد الممتاز</label>
 </div>
 
 <div class="question">
@@ -160,7 +160,7 @@
   q6: "ب",
   q7: "ب",
   q8: "ب",
-  q9: "",
+  q9: "ب",
   q10: "ب"
 };
 
