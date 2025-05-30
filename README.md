@@ -52,6 +52,15 @@
       margin: 4px 0;
       cursor: pointer;
     }
+
+    .button {
+      background-color: #39ff14;
+      color: white;
+      padding: 30px 60px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      }
     h2 {
       color: #FF0000;
     }
