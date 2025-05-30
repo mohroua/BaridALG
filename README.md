@@ -146,15 +146,37 @@
     });
 
     function showResult() {
-      let score = 0;
-      questions.forEach((q, i) => {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        if (selected && parseInt(selected.value) === q.correct) {
-          score++;
-        }
-      });
-      document.getElementById("result").innerText = `✔️ نتيجتك: ${score} من ${questions.length}`;
+  let score = 0;
+  questions.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const options = document.getElementsByName(`q${i}`);
+
+    // إزالة أي تمييز سابق
+    options.forEach(opt => {
+      opt.parentElement.style.backgroundColor = "";
+      opt.parentElement.style.fontWeight = "normal";
+    });
+
+    if (selected) {
+      if (parseInt(selected.value) === q.correct) {
+        score++;
+      }
     }
+
+    // تمييز الإجابة الصحيحة باللون الأخضر
+    options[q.correct].parentElement.style.backgroundColor = "#d4edda";
+    options[q.correct].parentElement.style.fontWeight = "bold";
+
+    // تمييز الإجابة المختارة بخلفية مختلفة إذا كانت خاطئة
+    if (selected && parseInt(selected.value) !== q.correct) {
+      selected.parentElement.style.backgroundColor = "#f8d7da";
+      selected.parentElement.style.fontWeight = "bold";
+    }
+  });
+
+  document.getElementById("result").innerText = `✔️ نتيجتك: ${score} من ${questions.length}`;
+}
+
   </script>
 </body>
 </html>
