@@ -5,30 +5,30 @@
   <title>اختبار بريد الجزائر - الجانب المالي والإداري</title>
   <style>
     body {
-       font-family: 'arial', sans-serif;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  direction: rtl;
+      font-family: 'arial', sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
     }
     .header {
       text-align: right;
       margin-bottom: 30px;
     }
     .header img {
-      width: 900px;  
-  height: auto;  
-  display: block;
-  margin: 0 auto;
-  border-radius: 30px; /* ← لجعل الحواف دائرية */
+      width: 900px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 30px;
     }
-   .title {
-  font-size: 70px;
-  font-weight: bold;
-  margin: 50px auto;       /* ← تصحيح */
-  text-align: center;      /* ← لتوسيط النص نفسه */
-  width: fit-content;      /* ← يجعل العنصر بعرض النص فقط */
-  color: #004a99;
+    .title {
+      font-size: 70px;
+      font-weight: bold;
+      margin: 50px auto;
+      text-align: center;
+      width: fit-content;
+      color: #004a99;
     }
     .container {
       padding: 20px;
@@ -37,8 +37,8 @@
       background-color: #fff;
       padding: 15px;
       margin-bottom: 15px;
-      border: 5px solid #004a99; /* أزرق داكن */
-      border-right: 20px solid #ffc107; /* أصفر */
+      border: 5px solid #004a99;
+      border-right: 20px solid #ffc107;
       border-radius: 10px;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     }
@@ -55,6 +55,20 @@
     h2 {
       color: #FF0000;
     }
+    button {
+      padding: 10px 20px;
+      margin: 20px;
+      font-size: 18px;
+      background-color: #004a99;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .result {
+      font-size: 24px;
+      margin: 10px;
+    }
   </style>
 </head>
 <body>
@@ -63,13 +77,21 @@
     <img src="https://i.postimg.cc/8ChN66JP/Merged-Images.png" alt="شعار بريد الجزائر">
     <h1 class="title">اختبار بريد الجزائر الرقمي</h1>
     <h2>ملاحظة: هذا عبارة عن إختبار تجريبي</h2>
-  <!-- الأسئلة -->
- <!-- أسئلة جديدة -->
-<div class="question">
-<form id="quizForm"></form>
-  <button onclick="showResult()">عرض النتيجة</button>
-  <div id="result" class="result"></div>
+  </div>
 
+  <!-- الأسئلة -->
+  <div id="quiz"></div>
+  <button onclick="showResult()">عرض النتيجة</button>
+  <div class="result" id="result"></div>
+
+  <h2>حاسبة نتيجة اختبار QSM</h2>
+  <input type="number" id="total" placeholder="عدد الأسئلة الكلي">
+  <input type="number" id="correct" placeholder="عدد الإجابات الصحيحة">
+  <br>
+  <button onclick="calculateQSM()">احسب النتيجة</button>
+  <div class="result" id="output"></div>
+
+  <!-- الكود البرمجي -->
   <script>
     const questions = [];
 
@@ -77,6 +99,8 @@
       questions.push({ q, options, correct });
     }
 
+    // إضافة الأسئلة هنا (اختصرت فقط بعضها كمثال)
+    
     addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
     addQuestion("ما هو الحد الأقصى اليومي للتحويل من حساب إلى حساب عبر الصراف؟", ["20,000 دج", "30,000 دج", "50,000 دج", "100,000 دج"], 2);
     addQuestion("ما هي الخدمة التي تسمح بالسحب بدون بطاقة؟", ["Hawalatic", "Cardless", "Flexy", "Edahabia"], 1);
@@ -132,52 +156,63 @@
     addQuestion("كيف يُحسن الموظف علاقته مع زملائه؟", ["التعاون والاحترام", "العمل الفردي فقط", "الغيرة والمنافسة", "التحدث كثيرًا"], 0);
     addQuestion("ما هي العقوبة الإدارية الأخف؟", ["الطرد النهائي", "التوبيخ", "الخصم من الأجر", "التوقيف المؤقت"], 1);
     addQuestion("كيف يمكن تطوير الكفاءة المهنية؟", ["التكوين المستمر", "الراحة فقط", "العمل الروتيني", "تجاهل التعليمات"], 0);
-
-    const form = document.getElementById("quizForm");
-
+    
+    const quizDiv = document.getElementById("quiz");
     questions.forEach((q, i) => {
       const div = document.createElement("div");
       div.className = "question";
-      div.innerHTML = `<h3>س${i+1}: ${q.q}</h3>` +
-        q.options.map((opt, j) => `
-          <label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>
-        `).join("");
-      form.appendChild(div);
+      div.innerHTML = `<h3>س${i + 1}: ${q.q}</h3>` + q.options.map((opt, j) => `
+        <label>
+          <input type="radio" name="q${i}" value="${j}"> ${opt}
+        </label>`).join("");
+      quizDiv.appendChild(div);
     });
 
     function showResult() {
-  let score = 0;
-  questions.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="q${i}"]:checked`);
-    const options = document.getElementsByName(`q${i}`);
+      let score = 0;
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        const options = document.getElementsByName(`q${i}`);
 
-    // إزالة أي تمييز سابق
-    options.forEach(opt => {
-      opt.parentElement.style.backgroundColor = "";
-      opt.parentElement.style.fontWeight = "normal";
-    });
+        options.forEach(opt => {
+          opt.parentElement.style.backgroundColor = "";
+          opt.parentElement.style.fontWeight = "normal";
+        });
 
-    if (selected) {
-      if (parseInt(selected.value) === q.correct) {
-        score++;
+        if (selected) {
+          if (parseInt(selected.value) === q.correct) {
+            score++;
+          }
+        }
+
+        options[q.correct].parentElement.style.backgroundColor = "#d4edda";
+        options[q.correct].parentElement.style.fontWeight = "bold";
+
+        if (selected && parseInt(selected.value) !== q.correct) {
+          selected.parentElement.style.backgroundColor = "#f8d7da";
+          selected.parentElement.style.fontWeight = "bold";
+        }
+      });
+
+      document.getElementById("result").innerText = `✔️ نتيجتك: ${score} من ${questions.length}`;
+    }
+
+    function calculateQSM() {
+      const total = parseInt(document.getElementById('total').value);
+      const correct = parseInt(document.getElementById('correct').value);
+      const wrong = total - correct;
+      const score = correct - wrong;
+      const percent = ((Math.max(score, 0) / total) * 100).toFixed(2);
+
+      let message = '';
+      if (score < 0) {
+        message = `❌ النتيجة سالبة (${score})، تم اعتبارها 0.`;
+      } else {
+        message = `✅ نتيجتك: ${score} من ${total} (أي بنسبة ${percent}%)`;
       }
+
+      document.getElementById('output').innerText = message;
     }
-
-    // تمييز الإجابة الصحيحة باللون الأخضر
-    options[q.correct].parentElement.style.backgroundColor = "#d4edda";
-    options[q.correct].parentElement.style.fontWeight = "bold";
-
-    // تمييز الإجابة المختارة بخلفية مختلفة إذا كانت خاطئة
-    if (selected && parseInt(selected.value) !== q.correct) {
-      selected.parentElement.style.backgroundColor = "#f8d7da";
-      selected.parentElement.style.fontWeight = "bold";
-    }
-  });
-
-  document.getElementById("result").innerText = `✔️ نتيجتك: ${score} من ${questions.length}`;
-}
-
   </script>
 </body>
 </html>
-
