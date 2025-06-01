@@ -31,14 +31,27 @@
   border-bottom: 1px solid #ccc;
 }
 
-.header img {
-  height: 40px;
-  margin-left: 10px; /* يقلل التباعد */
+.header {
+  display: flex;
+  justify-content: center; /* توسيط المحتوى الكامل */
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
 }
 
-.header h1 {
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* المسافة المتوازنة بين النص والشعار */
+}
+
+.header-content span {
   font-size: 20px;
-  margin: 0;
+  font-weight: bold;
+}
+
+.header-content img {
+  height: 40px;
 }
 
 
@@ -175,12 +188,12 @@
 
 
   <div class="header">
-
+  <div class="header-content">
     <span>مركز الامتحان</span>
-
     <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
-
   </div>
+</div>
+
 
 
 
