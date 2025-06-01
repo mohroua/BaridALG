@@ -2,105 +2,147 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>اختبار بريد الجزائر - الجانب المالي والإداري</title>
+  <title>مركز الامتحان - بريد الجزائر</title>
   <style>
     body {
-      font-family: 'arial', sans-serif;
-      background-color: #fff;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
-      direction: rtl;
     }
     .header {
-      text-align: right;
-      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
     }
     .header img {
-      width: 900px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border-radius: 30px;
+      height: 40px;
     }
-    .title {
-      font-size: 70px;
-      font-weight: bold;
-      margin: 50px auto;
+    .content {
       text-align: center;
-      width: fit-content;
-      color: #004a99;
+      padding: 30px;
     }
-    .container {
-      padding: 20px;
-    }
-    .question {
+    .box {
       background-color: #fff;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 5px solid #004a99;
-      border-right: 20px solid #ffc107;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 20px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .status span {
+      background-color: #f0f0f0;
       border-radius: 10px;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 5px 10px;
+      margin-right: 10px;
     }
-    .question p {
-      margin: 0 0 10px;
-      font-weight: bold;
-      color: #004a99;
-    }
-    .question label {
-      display: block;
-      margin: 4px 0;
-      cursor: pointer;
-    }
-    h2 {
-      color: #FF0000;
+    .status .orange {
+      background-color: orange;
+      color: white;
     }
     button {
       padding: 10px 20px;
-      margin: 20px;
+      margin-top: 20px;
       font-size: 18px;
-      background-color: #004a99;
-      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      background-color: #ddd;
       cursor: pointer;
     }
-    .result {
-      font-size: 24px;
-      margin: 10px;
+
+    #exam-section {
+      display: none;
+      padding: 20px;
+    }
+
+    .question {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 8px 0;
+    }
+    .hidden {
+      display: none;
+    }
+    #timer {
+      font-weight: bold;
+      color: red;
+      margin: 10px 0;
+    }
+    #nav-buttons {
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <img src="https://i.postimg.cc/8ChN66JP/Merged-Images.png" alt="شعار بريد الجزائر">
-    <h1 class="title">اختبار بريد الجزائر الرقمي</h1>
-    <h2>ملاحظة: هذا عبارة عن إختبار تجريبي</h2>
+    <span>مركز الامتحان</span>
+    <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
   </div>
 
-  <!-- الأسئلة -->
-  <div id="quiz"></div>
-  <button onclick="showResult()">عرض النتيجة</button>
-  <div class="result" id="result"></div>
+  <div class="content" id="welcome-section">
+    <h2 id="username">مرحبا المترشح</h2>
+    <div class="box">
+      <h3> مكلف بالزبائن</h3>
+      <div class="status">
+        <span>55 الأسئلة</span>
+        <span class="orange">لم يبدأ بعد</span>
+      </div>
+      <p>امتحان مكلف بالزبائن</p>
+      <button onclick="startExam()">بدء الامتحان</button>
+    </div>
+  </div>
 
-  <h2>حاسبة نتيجة اختبار QSM</h2>
-  <input type="number" id="total" placeholder="عدد الأسئلة الكلي">
-  <input type="number" id="correct" placeholder="عدد الإجابات الصحيحة">
-  <br>
-  <button onclick="calculateQSM()">احسب النتيجة</button>
-  <div class="result" id="output"></div>
+  <div id="exam-section">
+    <div class="question" id="question-text"></div>
+    <div id="timer"></div>
+    <div id="choices"></div>
+    <div id="nav-buttons">
+      <button id="prevBtn" onclick="prevQuestion()">السابق</button>
+      <button onclick="nextQuestion()">التالي</button>
+    </div>
+    <div id="result" class="hidden"></div>
+  </div>
 
-  <!-- الكود البرمجي -->
   <script>
+    // التقاط الاسم من الرابط
+    function getNameFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("name") || "المترشح";
+    }
+
+    // عرض الاسم
+    document.addEventListener("DOMContentLoaded", function() {
+      const name = getNameFromURL();
+      document.getElementById("username").textContent = `مرحبا ${name.replace('.', ' ')}`;
+    });
+
+    // بدء الامتحان
+    function startExam() {
+      document.getElementById("welcome-section").style.display = "none";
+      document.getElementById("exam-section").style.display = "block";
+      showQuestion();
+    }
+
     const questions = [];
 
     function addQuestion(q, options, correct) {
-      questions.push({ q, options, correct });
+      questions.push({ q, choices: options, correct });
     }
 
-    // إضافة الأسئلة هنا (اختصرت فقط بعضها كمثال)
-    
+    // إضافة الأسئلة
     addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
     addQuestion("ما هو الحد الأقصى اليومي للتحويل من حساب إلى حساب عبر الصراف؟", ["20,000 دج", "30,000 دج", "50,000 دج", "100,000 دج"], 2);
     addQuestion("ما هي الخدمة التي تسمح بالسحب بدون بطاقة؟", ["Hawalatic", "Cardless", "Flexy", "Edahabia"], 1);
@@ -110,7 +152,7 @@
     addQuestion("كم هو الحد الأدنى للرصيد اللازم لفتح حساب CCP؟", ["0 دج", "1000 دج", "500 دج", "100 دج"], 0);
     addQuestion("ما هو الرمز الذي يُستخدم لتحويل الأموال إلى حساب CCP؟", ["RIB", "RIP", "IBAN", "SWIFT"], 1);
     addQuestion("ما هي الرسوم السنوية للبطاقة الذهبية؟", ["مجانية", "350 دج", "500 دج", "1000 دج"], 1);
-    addQuestion("ما هي مدة صلاحية البطاقة الذهبية؟", ["سنة واحدة", "سنتان", "ثلاث سنوات", "خمس سنوات"], 1);
+    addQuestion("ما هي مدة صلاحية البطاقة الذهبية؟", ["سنة واحدة", "سنتان", "ثلاث سنوات", "خمس سنوات"], 2);
     addQuestion("أي من هذه الخدمات يمكن إجراؤها عبر البطاقة الذهبية؟", ["دفع الفواتير", "السحب من الصراف", "شراء عبر الإنترنت", "جميع ما سبق"], 3);
     addQuestion("ما هي الجهة المخوّلة بإصدار دفتر الشيكات البريدي؟", ["وزارة المالية", "البنك المركزي", "بريد الجزائر", "الخزينة العمومية"], 2);
     addQuestion("كيف يتم تفعيل البطاقة الذهبية بعد استلامها؟", ["عبر الهاتف", "عبر تطبيق BaridiMob", "من مكتب البريد", "عبر الصراف الآلي"], 3);
@@ -157,62 +199,132 @@
     addQuestion("ما هي العقوبة الإدارية الأخف؟", ["الطرد النهائي", "التوبيخ", "الخصم من الأجر", "التوقيف المؤقت"], 1);
     addQuestion("كيف يمكن تطوير الكفاءة المهنية؟", ["التكوين المستمر", "الراحة فقط", "العمل الروتيني", "تجاهل التعليمات"], 0);
     
-    const quizDiv = document.getElementById("quiz");
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `<h3>س${i + 1}: ${q.q}</h3>` + q.options.map((opt, j) => `
-        <label>
-          <input type="radio" name="q${i}" value="${j}"> ${opt}
-        </label>`).join("");
-      quizDiv.appendChild(div);
-    });
+    let currentQuestion = 0;
+    let answers = Array(questions.length).fill(null);
+    let timers = Array(questions.length).fill(120); // 120 ثانية
+    let timerInterval;
 
-    function showResult() {
-      let score = 0;
-      questions.forEach((q, i) => {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        const options = document.getElementsByName(`q${i}`);
+    function showQuestion() {
+      clearInterval(timerInterval);
 
-        options.forEach(opt => {
-          opt.parentElement.style.backgroundColor = "";
-          opt.parentElement.style.fontWeight = "normal";
+      const q = questions[currentQuestion];
+      document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
+      const choicesDiv = document.getElementById("choices");
+      choicesDiv.innerHTML = "";
+
+      q.choices.forEach((choice, index) => {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "choice";
+        input.value = index;
+        input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
+        if (answers[currentQuestion] === index) input.checked = true;
+
+        input.addEventListener("change", () => {
+          if (answers[currentQuestion] === null) {
+            answers[currentQuestion] = index;
+            disableChoices(); // غلق الاختيارات بعد الإجابة
+          }
         });
 
-        if (selected) {
-          if (parseInt(selected.value) === q.correct) {
-            score++;
-          }
-        }
-
-        options[q.correct].parentElement.style.backgroundColor = "#d4edda";
-        options[q.correct].parentElement.style.fontWeight = "bold";
-
-        if (selected && parseInt(selected.value) !== q.correct) {
-          selected.parentElement.style.backgroundColor = "#f8d7da";
-          selected.parentElement.style.fontWeight = "bold";
-        }
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(" " + choice));
+        choicesDiv.appendChild(label);
       });
 
-      document.getElementById("result").innerText = `✔️ نتيجتك: ${score} من ${questions.length}`;
+      // إخفاء زر السابق إذا كنا في السؤال الأول
+      document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
+
+      startTimer();
     }
 
-    function calculateQSM() {
-      const total = parseInt(document.getElementById('total').value);
-      const correct = parseInt(document.getElementById('correct').value);
-      const wrong = total - correct;
-      const score = correct - wrong;
-      const percent = ((Math.max(score, 0) / total) * 100).toFixed(2);
+    function startTimer() {
+      const timerElement = document.getElementById("timer");
 
-      let message = '';
-      if (score < 0) {
-        message = `❌ النتيجة سالبة (${score})، تم اعتبارها 0.`;
-      } else {
-        message = `✅ نتيجتك: ${score} من ${total} (أي بنسبة ${percent}%)`;
+      if (timers[currentQuestion] <= 0) {
+        timerElement.textContent = "انتهى الوقت لهذا السؤال.";
+        return;
       }
 
-      document.getElementById('output').innerText = message;
+      timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+
+      timerInterval = setInterval(() => {
+        timers[currentQuestion]--;
+        timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+
+        if (timers[currentQuestion] <= 0) {
+          clearInterval(timerInterval);
+          timerElement.textContent = "انتهى الوقت لهذا السؤال.";
+          disableChoices();
+          setTimeout(nextQuestion, 1000); // ينتقل تلقائيًا بعد ثانية
+        }
+      }, 1000);
     }
+
+    function disableChoices() {
+      const inputs = document.querySelectorAll("input[name='choice']");
+      inputs.forEach(input => input.disabled = true);
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0 && answers[currentQuestion - 1] === null) {
+        currentQuestion--;
+        showQuestion();
+      }
+    }
+
+    function finishQuiz() {
+  clearInterval(timerInterval);
+  document.getElementById("question-text").classList.add("hidden");
+  document.getElementById("choices").classList.add("hidden");
+  document.getElementById("timer").classList.add("hidden");
+  document.getElementById("nav-buttons").classList.add("hidden");
+
+  let correct = 0;
+  let wrong = 0;
+
+  questions.forEach((q, i) => {
+    if (answers[i] !== null && timers[i] > 0) {
+      if (answers[i] === q.correct) {
+        correct++;
+      } else {
+        wrong++;
+      }
+    }
+  });
+
+  let finalScore = correct - wrong;
+  if (finalScore < 0) finalScore = 0;
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.classList.remove("hidden");
+
+  let message = "";
+  if (finalScore >= Math.ceil(questions.length / 2)) {
+    message = `<span style="color: green;">✔️ مبروك! لقد نجحت</span>`;
+  } else {
+    message = `<span style="color: red;">❌ للأسف، حظ موفق في المرة القادمة</span>`;
+  }
+
+  resultDiv.innerHTML = `
+    <h2>انتهى الاختبار</h2>
+    <p>عدد الإجابات الصحيحة: ${correct}</p>
+    <p>عدد الإجابات الخاطئة: ${wrong}</p>
+    <p><strong>علامتك النهائية: ${finalScore} من ${questions.length}</strong></p>
+    <p>${message}</p>
+  `;
+}
+
   </script>
 </body>
 </html>
