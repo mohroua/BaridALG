@@ -1094,17 +1094,32 @@
 
 
 
-  let finalScore = correct - wrong;
+    // عرض قائمة بكل سؤال، الإجابة الصحيحة، وإجابة المستخدم إن وُجدت
+  let answerReview = "<h3>مراجعة الأسئلة:</h3><ol>";
+  questions.forEach((q, i) => {
+    const userAnswer = answers[i];
+    const correctAnswer = q.correct;
+    const isCorrect = userAnswer === correctAnswer;
 
-  if (finalScore < 0) finalScore = 0;
+    answerReview += `<li><strong>السؤال ${i + 1}:</strong> ${q.q}<br>`;
+    answerReview += `✔️ <span style="color: green;">الإجابة الصحيحة: ${q.choices[correctAnswer]}</span><br>`;
 
+    if (userAnswer !== null) {
+      if (!isCorrect) {
+        answerReview += `❌ <span style="color: red;">إجابتك: ${q.choices[userAnswer]}</span>`;
+      } else {
+        answerReview += `<span style="color: blue;">إجابتك كانت صحيحة</span>`;
+      }
+    } else {
+      answerReview += `<span style="color: gray;">لم تجب عن هذا السؤال</span>`;
+    }
 
+    answerReview += `</li><br>`;
+  });
+  answerReview += "</ol>";
 
-  const resultDiv = document.getElementById("result");
-
-  resultDiv.classList.remove("hidden");
-
-
+  resultDiv.innerHTML += answerReview;
+      
 
   let message = "";
 
