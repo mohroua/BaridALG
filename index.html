@@ -1,198 +1,673 @@
 <!DOCTYPE html>
 
+
+
 <html lang="ar" dir="rtl">
+
+
 
 <head>
 
+
+
   <meta charset="UTF-8">
+
+
 
   <title>مركز الامتحان - بريد الجزائر</title>
 
+
+
   <style>
+
+
 
     body {
 
+
+
+
+
+
+
       font-family: Arial, sans-serif;
+
+
 
       background-color: #f9f9f9;
 
+
+
       margin: 0;
+
+
 
       padding: 0;
 
+
+
+
+
+
+
     }
 
+
+
+
+
+
+
   .header {
+
+
+
   display: flex;
+
+
+
   justify-content: space-between;
+
+
+
   align-items: center;
+
+
+
   padding: 10px 20px;
+
+
+
   background-color: #fff;
+
+
+
   border-bottom: 1px solid #ccc;
+
+
+
 }
 
-.header {
-  display: flex;
-  justify-content: center; /* توسيط المحتوى الكامل */
-  padding: 10px 20px;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-}
+
+
+
+
+
 
 .header-content {
+
+
+
   display: flex;
+
+
+
   align-items: center;
-  gap: 40px; /* المسافة المتوازنة بين النص والشعار */
+
+
+
+  gap: 10px; /* المسافة المتوازنة بين النص والشعار */
+
+
+
 }
+
+
+
+
+
+
 
 .header-content span {
+
+
+
   font-size: 20px;
+
+
+
   font-weight: bold;
+
+
+
 }
 
+
+
+
+
+
+
 .header-content img {
-  height: 40px;
+
+
+
+  height: 80px;
+
+
+
 }
+
+
+
+
+
+
+
+
+
 
 
     .content {
 
+
+
+
+
+
+
       text-align: center;
+
+
+
+
+
+
 
       padding: 30px;
 
-    }
 
-    .box {
 
-      background-color: #fff;
 
-      border: 1px solid #ddd;
-
-      border-radius: 15px;
-
-      padding: 20px;
-
-      display: inline-block;
-
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
     }
+
+
+
+
+
+.box {
+
+
+
+  background-color: #fff;
+
+
+
+  border: 1px solid #ddd;
+
+
+
+  border-radius: 15px;
+
+
+
+  padding: 20px;
+
+
+
+  display: inline-block;
+
+
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+
+
+
+
+
+
+  width: 70%;
+
+
+
+  max-width: 800px;
+
+
+
+  min-width: 300px;
+
+
+
+
+
+
+
+  margin: 0 auto;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
 
     .status {
 
+
+
+
+
+
+
       display: flex;
+
+
+
+
+
+
 
       justify-content: center;
 
+
+
+
+
+
+
       align-items: center;
+
+
+
+
+
+
 
       margin: 10px 0;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     .status span {
 
+
+
+
+
+
+
       background-color: #f0f0f0;
 
+
+
+
+
+
+
       border-radius: 10px;
+
+
+
+
+
+
 
       padding: 5px 10px;
 
+
+
+
+
+
+
       margin-right: 10px;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     .status .orange {
 
+
+
+
+
+
+
       background-color: orange;
+
+
+
+
+
+
 
       color: white;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     button {
 
+
+
+
+
+
+
       padding: 10px 20px;
+
+
+
+
+
+
 
       margin-top: 20px;
 
+
+
+
+
+
+
       font-size: 18px;
+
+
+
+
+
+
 
       border: none;
 
+
+
+
+
+
+
       border-radius: 10px;
+
+
+
+
+
+
 
       background-color: #ddd;
 
+
+
+
+
+
+
       cursor: pointer;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     #exam-section {
 
+
+
+
+
+
+
       display: none;
 
-      padding: 20px;
+
+
+
+
+
+
+      padding: 40px;
+
+
+
+
+
+
 
     }
+
+
+
+
 
 
 
     .question {
 
-      font-size: 20px;
+
+
+
+
+
+
+      font-size: 40px;
+
+
+
+
+
+
 
       font-weight: bold;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     label {
 
+
+
+
+
+
+
       display: block;
+
+
+
+
+
+
 
       margin: 8px 0;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     .hidden {
 
+
+
+
+
+
+
       display: none;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     #timer {
 
+
+
+
+
+
+
       font-weight: bold;
+
+
+
+
+
+
 
       color: red;
 
+
+
+
+
+
+
       margin: 10px 0;
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
 
     #nav-buttons {
 
+
+
+
+
+
+
       margin-top: 15px;
+
+
+
+
+
+
 
     }
 
+
+
+
+
+
+
   </style>
+
+
 
 </head>
 
+
+
 <body>
 
+  
 
+      
 
   <div class="header">
+
   <div class="header-content">
-    <span>مركز الامتحان</span>
-    <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
+
+  <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
+
+  <span>مركز الامتحان</span>
+
   </div>
+
 </div>
+
 
 
 
