@@ -388,7 +388,7 @@ function finishQuiz() {
   bottom: 0;
   width: 85%;
   text-align: center;
-  font-size: 5px;
+  font-size: 10px;
   color: #555;
   background-color: transparent;
   padding: 5px 0;
