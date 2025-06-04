@@ -336,11 +336,12 @@ function nextQuestion() {
 }
 
 function prevQuestion() {
-  if (currentQuestion > 0 && answers[currentQuestion - 1] === null) {
+  if (currentQuestion > 0) { // فقط تحقق من أن هناك سؤال سابق
     currentQuestion--;
     showQuestion();
   }
 }
+
 
 function finishQuiz() {
   clearInterval(timerInterval);
