@@ -301,28 +301,41 @@ function showQuestion() {
 }
 
 function startTimer() {
-  const timerElement = document.getElementById("timer");
+  const timerElement = document.getElementById("timer");
 
-  if (timers[currentQuestion] <= 0) {
-    timerElement.textContent = "انتهى الوقت لهذا السؤال.";
-    return;
-  }
+  if (timers[currentQuestion] <= 0) {
+    timerElement.textContent = "انتهى الوقت لهذا السؤال.";
+    return;
+  }
 
-  timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+  updateTimerText();
 
-  timerInterval = setInterval(() => {
-    timers[currentQuestion]--;
-    timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+  timerInterval = setInterval(() => {
+    timers[currentQuestion]--;
+    updateTimerText();
 
-    if (timers[currentQuestion] <= 0) {
-      clearInterval(timerInterval);
-      timerElement.textContent = "انتهى الوقت لهذا السؤال.";
-      disableChoices();
-      setTimeout(nextQuestion, 1000);
-    }
-  }, 1000);
+    if (timers[currentQuestion] <= 0) {
+      clearInterval(timerInterval);
+      timerElement.textContent = "انتهى الوقت لهذا السؤال.";
+      disableChoices();
+      setTimeout(nextQuestion, 1000);
+    }
+  }, 1000);
 }
 
+// دالة جديدة لتحويل الثواني إلى دقائق وثوانٍ
+function updateTimerText() {
+  const timerElement = document.getElementById("timer");
+  const seconds = timers[currentQuestion];
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  // نضيف صفر أمام الأرقام الأقل من 10 لجعلها ثنائية الخانة
+  const minStr = minutes.toString().padStart(2, '0');
+  const secStr = remainingSeconds.toString().padStart(2, '0');
+
+  timerElement.textContent = `الوقت المتبقي: ${minStr}:${secStr}`;
+}
 function disableChoices() {
   const inputs = document.querySelectorAll("input[name='choice']");
   inputs.forEach(input => input.disabled = true);
