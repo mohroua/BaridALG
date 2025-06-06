@@ -299,7 +299,6 @@ function showQuestion() {
 
   startTimer();
 }
-
 function startTimer() {
   const timerElement = document.getElementById("timer");
 
@@ -335,7 +334,10 @@ function updateTimerText() {
   const secStr = remainingSeconds.toString().padStart(2, '0');
 
   timerElement.textContent = `الوقت المتبقي: ${minStr}:${secStr}`;
-}
+    }
+
+    
+
 function disableChoices() {
   const inputs = document.querySelectorAll("input[name='choice']");
   inputs.forEach(input => input.disabled = true);
