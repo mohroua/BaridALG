@@ -56,8 +56,8 @@
 
     .status {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: right;
+      align-items: right;
       margin: 5px 0; /* تقليل الهامش العمودي */
     }
 
