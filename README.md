@@ -48,7 +48,7 @@
       padding: 15px; /* تقليل الفراغ داخل المربع */
       display: inline-block;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      width: 100%;
+      width: 70%;
       max-width: 800px;
       min-width: 300px;
       margin: 0 auto;
@@ -56,8 +56,8 @@
 
     .status {
       display: flex;
-      justify-content: right;
-      align-items: right;
+      justify-content: center;
+      align-items: center;
       margin: 5px 0; /* تقليل الهامش العمودي */
     }
 
@@ -75,9 +75,9 @@
     }
 
     button {
-      padding: 16px 32px;
+      padding: 8px 16px;
       margin-top: 10px;
-      font-size: 30px;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
       background-color: #ddd;
@@ -86,7 +86,7 @@
 
     #exam-section {
       display: none;
-      padding: 50px; /* تقليل المسافة */
+      padding: 20px; /* تقليل المسافة */
     }
 
     .question {
