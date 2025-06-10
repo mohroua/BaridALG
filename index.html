@@ -1,167 +1,194 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>مركز الامتحان - بريد الجزائر</title>
-
   <style>
-
     body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-}
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 10px; /* تقليل البادينغ */
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-}
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px; /* تقليل البادينغ */
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+    }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 5px; /* تقليل المسافة بين الشعار والنص */
-}
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 5px; /* تقليل المسافة بين الشعار والنص */
+    }
 
-.header-content span {
-  font-size: 18px; /* تصغير الخط */
-  font-weight: bold;
-}
+    .header-content span {
+      font-size: 18px; /* تصغير الخط */
+      font-weight: bold;
+    }
 
-.header-content img {
-  height: 60px; /* تصغير حجم الشعار */
-}
+    .header-content img {
+      height: 60px; /* تصغير حجم الشعار */
+    }
 
-.content {
-  text-align: center;
-  padding: 15px; /* تقليل المسافة حول المحتوى */
-}
+    .content {
+      text-align: center;
+      padding: 15px; /* تقليل المسافة حول المحتوى */
+    }
 
-.box {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px; /* تقليل الفراغ داخل المربع */
-  display: inline-block;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  width: 70%;
-  max-width: 800px;
-  min-width: 300px;
-  margin: 0 auto;
-}
+    .box {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px; /* تقليل الفراغ داخل المربع */
+      display: inline-block;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      width: 70%;
+      max-width: 800px;
+      min-width: 300px;
+      margin: 0 auto;
+    }
 
-.status {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px 0; /* تقليل الهامش العمودي */
-}
+    .status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px 0; /* تقليل الهامش العمودي */
+    }
 
-.status span {
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  padding: 3px 8px; /* تقليل الحجم الداخلي */
-  margin-right: 5px;
-  font-size: 14px;
-}
+    .status span {
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 3px 8px; /* تقليل الحجم الداخلي */
+      margin-right: 5px;
+      font-size: 14px;
+    }
 
-.status .orange {
-  background-color: orange;
-  color: white;
-}
+    .status .orange {
+      background-color: orange;
+      color: white;
+    }
 
-button {
-  padding: 8px 16px;
-  margin-top: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  background-color: #ddd;
-  cursor: pointer;
-}
+    button {
+      padding: 8px 16px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
 
-#exam-section {
-  display: none;
-  padding: 20px; /* تقليل المسافة */
-}
+    #exam-section {
+      display: none;
+      padding: 20px; /* تقليل المسافة */
+    }
 
-.question {
-  font-size: 28px; /* تقليل حجم السؤال */
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+    .question {
+      font-size: 28px; /* تقليل حجم السؤال */
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-label {
-  display: block;
-  margin: 5px 0; /* تقليل الفراغ بين الخيارات */
-  font-size: 15px;
-}
+    label {
+      display: block;
+      margin: 5px 0; /* تقليل الفراغ بين الخيارات */
+      font-size: 15px;
+    }
 
-.hidden {
-  display: none;
-}
+    .hidden {
+      display: none;
+    }
 
-#timer {
-  font-weight: bold;
-  color: red;
-  margin: 5px 0; /* تقليل المسافة حول المؤقت */
-}
+    #timer {
+      font-weight: bold;
+      color: red;
+      margin: 5px 0; /* تقليل المسافة حول المؤقت */
+    }
 
-#nav-buttons {
-  margin-top: 10px;
-}
+    #nav-buttons {
+      margin-top: 10px;
+    }
 
-  .correct {
-    color: green;
-    font-weight: bold;
-  }
-  .wrong {
-    color: red;
-    font-weight: bold;
-  }
-  .question-block {
-    margin-bottom: 20px;
-  }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .wrong {
+      color: red;
+      font-weight: bold;
+    }
+    .question-block {
+      margin-bottom: 20px;
+    }
 
+    /* الأنماط لرسالة الإقصاء */
+    #disqualification-container {
+      background-color: #ffe6e6; /* خلفية حمراء فاتحة */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 90%;
+      border: 2px solid #ff4d4d; /* حدود حمراء */
+      text-align: center;
+      margin: 50px auto; /* لتوسيط الرسالة */
+    }
+
+    #disqualification-text {
+      color: #ff0000; /* نص أحمر للإقصاء */
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #retry-button {
+      background-color: #4CAF50; /* خلفية خضراء */
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    #retry-button:hover {
+      background-color: #45a049; /* أخضر أغمق عند التحويم */
+    }
   </style>
 
 </head>
 
 <body>
-<!-- هذا هو العنصر الذي تحتاجه لتصحيح الأسئلة -->
-<div id="correction-section" class="hidden"></div>
 
   <div class="header">
-  <div class="header-content">
-    <span>مركز الامتحان</span>
-    <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
+    <div class="header-content">
+      <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
+      <span>مركز الامتحان</span>
+    </div>
   </div>
-</div>
 
 
   <div class="content" id="welcome-section">
     <h2 id="username">مرحبا المترشح</h2>
     <div class="box">
-      <h3> مكلف بالزبائن</h3>
+      <h3> ساعي البريد </h3>
       <div class="status">
-        <span>55 الأسئلة</span>
+        <span>35 الأسئلة</span>
         <span class="orange">لم يبدأ بعد</span>
       </div>
-      <p>امتحان مكلف بالزبائن</p>
+      <p>امتحان ساعي البريد</p>
       <button onclick="startExam()">بدء الامتحان</button>
     </div>
   </div>
 
-  <div id="exam-section">
+  <div id="exam-section" class="hidden">
     <div class="question" id="question-text"></div>
     <div id="timer"></div>
     <div id="choices"></div>
@@ -172,31 +199,98 @@ label {
     <div id="result" class="hidden"></div>
   </div>
 
+  <div id="correction-section" class="hidden"></div>
+
   <script>
-    // التقاط الاسم من الرابط
-    function getNameFromURL() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("name") || "المترشح";
-    }
+    // 👇 اختر الوضع هنا: "training" أو "official"
+    const mode = "training"; // قم بتغيير هذا إلى "official" عند الحاجة
+    let examStarted = false; // متغير لتتبع حالة بدء الامتحان
 
-    // عرض الاسم
-    document.addEventListener("DOMContentLoaded", function() {
-      const name = getNameFromURL();
-      document.getElementById("username").textContent = `مرحبا ${name.replace('.', ' ')}`;
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const welcomeSection = document.getElementById("welcome-section");
+        const examSection = document.getElementById("exam-section");
 
-    // بدء الامتحان
-    function startExam() {
-      document.getElementById("welcome-section").style.display = "none";
-      document.getElementById("exam-section").style.display = "block";
-      showQuestion();
-    }
+        // دالة لعرض رسالة الإقصاء بناءً على الوضع
+        function showDisqualificationMessage() {
+            // إخفاء كل أقسام الصفحة
+            welcomeSection.classList.add("hidden");
+            examSection.classList.add("hidden");
 
-    const questions = [];
+            // مسح المحتوى الحالي لـ body بالكامل لضمان عدم ظهور أي شيء آخر
+            document.body.innerHTML = '';
 
-    function addQuestion(q, options, correct) {
-      questions.push({ q, choices: options, correct });
-    }
+            const div = document.createElement('div');
+            div.id = 'disqualification-container';
+            div.className = 'disqualification-container';
+
+            if (mode === "training") {
+                div.innerHTML = `
+                    <p id="disqualification-text">لقد تم إقصاؤك من الامتحان!</p>
+                    <p>هذا اختبار تجريبي، يمكنك إعادة المحاولة.</p>
+                    <button id="retry-button">إعادة المحاولة</button>
+                `;
+                document.body.appendChild(div);
+                document.getElementById("retry-button").addEventListener("click", function () {
+                    // مسح علامة الإقصاء والسماح بإعادة المحاولة
+                    localStorage.removeItem("disqualified");
+                    location.reload(); // إعادة تحميل الصفحة
+                });
+            } else if (mode === "official") {
+                div.innerHTML = `
+                    <p id="disqualification-text">لقد تم إقصاؤك من الامتحان!</p>
+                    <p>لا يمكنك إعادة الدخول مرة أخرى.</p>
+                `;
+                document.body.appendChild(div);
+            }
+        }
+
+        // التحقق عند تحميل الصفحة إذا كان المستخدم قد تم إقصاؤه مسبقًا
+        if (localStorage.getItem("disqualified") === "true") {
+            showDisqualificationMessage();
+        } else {
+            // إظهار المحتوى الأصلي للصفحة إذا لم يتم الإقصاء
+            welcomeSection.classList.remove("hidden");
+            examSection.classList.add("hidden"); // تأكد من إخفاء قسم الامتحان في البداية
+        }
+
+        // معالج الحدث عند محاولة المستخدم مغادرة الصفحة أو تحديثها
+        window.addEventListener("beforeunload", function (event) {
+            // إذا كان الامتحان قد بدأ ولم ينتهِ بعد (أي، لم تظهر صفحة النتائج)
+            // هذا هو الشرط الذي يحدد ما إذا كان يجب تسجيل الإقصاء
+            if (examStarted && document.getElementById("result").classList.contains("hidden")) {
+                 localStorage.setItem("disqualified", "true");
+            }
+            // تم إزالة event.preventDefault() و event.returnValue = ''; لعدم إظهار الرسالة
+        });
+
+        // التقاط الاسم من الرابط
+        function getNameFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get("name") || "المترشح";
+        }
+
+        // عرض الاسم
+        const name = getNameFromURL();
+        document.getElementById("username").textContent = `مرحبا ${name.replace(/\./g, ' ')}`;
+
+
+        // بدء الامتحان (تم جعلها دالة عامة ليمكن استدعاؤها من HTML)
+        window.startExam = function() {
+            examStarted = true; // تعيين حالة بدء الامتحان إلى صحيح
+            welcomeSection.style.display = "none";
+            examSection.style.display = "block";
+            showQuestion();
+        };
+
+        const questions = [];
+
+        function addQuestion(q, options, correct) {
+            questions.push({ q, choices: options, correct });
+        }
+
+        // أسئلتك هنا
+
+
 
 addQuestion("ما هو الرمز المستخدم لتحويل الأموال بين الحسابات البريدية؟", ["RIB", "IBAN", "CCP", "SWIFT"], 2);
 addQuestion("متى تأسس بريد الجزائر؟", ["1962", "1975", "1990", "2000"], 0);
